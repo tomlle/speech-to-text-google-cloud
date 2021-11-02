@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>音声認識デモ</title>
+  <script type="module" src="./main.js"></script>
+  <link rel="stylesheet" href="./style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <script defar src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</head>
+<body class="bg-light">
+  <main>
+    <div class="d-flex justify-content-center pt-5 pb-5">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-1">
+          <img src="./cat.png" alt="" class="w-100" data-bs-toggle="tooltip" data-bs-placement="left" title="触りたくなるよね">
+        </div>
+        <div class="col-auto">
+          <h1>Speech To Text</h1>
+        </div>
+        <div class="col-1">
+          <img src="./cat.png" alt="" class="w-100" data-bs-toggle="tooltip" data-bs-placement="right" title="気になるよね">
+        </div>
+      </div>
+    </div>
+
+    <div class="border-top border-bottom">
+      <div class="container pt-5 pb-5">
+
+        <div class="row justify-content-center">
+          <div class="col-auto" id="recording">
+            <button class="btn btn-primary" id="startRecording">録音開始</button>
+            <button class="btn btn-primary disabled" id="stopRecording">録音停止</button>
+          </div>
+        </div>
+        
+        <div class="row justify-content-center mt-5">
+          <div class="col-12">
+            <label for="speechToText" class="form-label">録音のテキスト変換</label>
+            <div class="speechToTextWrap">
+              <textarea id="speechToText" name="searchStr" class="form-control" cols="30" rows="10" readonly></textarea>
+              <div class="d-none textRoading">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mt-5">
+          <div class="col-4">
+            <label class="form-label" for="keyword">キーワード</label>
+            <input class="form-control" type="text" name="keyword" id="keyword" value="日" required>
+          </div>
+          <div class="col-4">
+            <label class="form-label" for="beforeTextNum">前の文字数</label>
+            <div class="input-group">
+              <input class="form-control" type="number" min="0" max="10" id="beforeTextNum" name="beforeTextNum" value="5" required>
+              <span class="input-group-text">文字</span>
+            </div>
+          </div>
+          <div class="col-4">
+            <label class="form-label" for="afterTextNum">後の文字数</label>
+            <div class="input-group">
+              <input class="form-control" type="number" min="0" max="10" id="afterTextNum" name="afterTextNum" value="5" required>
+              <span class="input-group-text">文字</span>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center mt-5">
+          <div class="col-4 text-center">
+            <button class="btn btn-primary disabled" type="button" id="searchKeyword">検索</button>
+          </div>
+        </div>
+        <div id="outputText" class="mt-5"></div>
+      </div>
+    </div>
+    </main>
+</body>
+</html>
